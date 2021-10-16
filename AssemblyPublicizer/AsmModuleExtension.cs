@@ -1,25 +1,14 @@
 ﻿using AsmResolver.DotNet;
 using System.Linq;
 
+
 namespace AssemblyPublicizer
 {
-    public class AsmModuleDef : PublicizableAssembly
+    public static class AsmModuleExtension
     {
-        private ModuleDefinition? _moduleDefinition;
-
-        public override void Dispose()
+        public static void Publicize(this ModuleDefinition moduleDefinition, bool publicizeExplicitImpls = false)
         {
-            _moduleDefinition = null;
-        }
-
-        public override void Load(string filePath)
-        {
-            _moduleDefinition = ModuleDefinition.FromFile(filePath);
-        }
-        public override void Publicize(bool publicizeExplicitImpls)
-        {
-            if (_moduleDefinition is null) return;
-            foreach (var type in _moduleDefinition.GetAllTypes())
+            foreach (var type in moduleDefinition.GetAllTypes())
             {
                 if (type.IsNested)
                     type.IsNestedPublic = true;
@@ -41,10 +30,6 @@ namespace AssemblyPublicizer
                     field.IsPublic = true;
                 }
             }
-        }
-        public override void Write(string filePath)
-        {
-            _moduleDefinition?.Write(filePath);
         }
     }
 }

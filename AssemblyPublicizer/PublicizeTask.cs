@@ -1,8 +1,10 @@
-﻿using Microsoft.Build.Framework;
+﻿using AsmResolver.DotNet;
+using Microsoft.Build.Framework;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+
 
 namespace AssemblyPublicizer
 {
@@ -15,9 +17,7 @@ namespace AssemblyPublicizer
         [Required] public virtual string OutputDir { get; set; } = Directory.GetCurrentDirectory();
 
         public virtual bool PublicizeExplicitImpls { get; set; } = false;
-
-        public virtual bool AsmPatcher { get; set; } = false;
-
+        
         public override bool Execute()
         {
             Log.LogMessage($"Publicizing {InputAssemblies.Length} input assemblies provided");
@@ -45,8 +45,7 @@ namespace AssemblyPublicizer
             }
             Log.LogMessage($"Generating publicized assembly from {assemblyPath}");
             
-            PublicizableAssembly moduleDefinition = AsmPatcher ? new AsmModuleDef() : new DnModuleDef();
-            moduleDefinition.Load(assemblyPath);
+            var moduleDefinition = ModuleDefinition.FromFile(assemblyPath);
             moduleDefinition.Publicize(PublicizeExplicitImpls);
             var outputPath = Path.Combine(OutputDir, $"{filename}{OutputSuffix}.dll");
             moduleDefinition.Write(outputPath);

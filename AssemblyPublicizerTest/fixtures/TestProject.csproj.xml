@@ -1,0 +1,12 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <PublicizeTaskAssembly>$(MSBuildThisFileDirectory)..\AssemblyPublicizer.dll</PublicizeTaskAssembly>
+    </PropertyGroup>
+    <UsingTask TaskName="AssemblyPublicizer.PublicizeTask" AssemblyFile="$(PublicizeTaskAssembly)" />
+    <ItemGroup>
+        <PublicizeInputAssemblies Include="AccessTest.dll"/>
+    </ItemGroup>
+    <Target Name="Publicize">
+        <AssemblyPublicizer.PublicizeTask InputAssemblies="@(PublicizeInputAssemblies)" OutputDir="$(MSBuildThisFileDirectory)"/>
+    </Target>
+</Project>

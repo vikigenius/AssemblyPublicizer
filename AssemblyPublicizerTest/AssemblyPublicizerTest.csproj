@@ -11,6 +11,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AsmResolver.DotNet" Version="4.7.1" />
+        <PackageReference Include="Microsoft.Build" Version="16.11.0" />
+        <PackageReference Include="Microsoft.Build.Framework" Version="16.11.0" />
+        <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.11.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
         <PackageReference Include="xunit" Version="2.4.1" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
@@ -25,6 +29,15 @@
 
     <ItemGroup>
       <ProjectReference Include="..\AssemblyPublicizer\AssemblyPublicizer.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="fixtures\AccessTest.dll">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="fixtures\TestProject.csproj.xml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>
