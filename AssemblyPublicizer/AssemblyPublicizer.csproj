@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net472</TargetFramework>
+        <LangVersion>9</LangVersion>
+        <Nullable>enable</Nullable>
+        <DevelopmentDependency>true</DevelopmentDependency>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <IncludeBuildOutput>true</IncludeBuildOutput>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <ContentTargetFolders>build</ContentTargetFolders>
+        <Title>Assembly Publicizer</Title>
+        <Description>MSBuild Task to publicize assemblies</Description>
+        <Authors>vikigenius</Authors>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AsmResolver.DotNet" Version="4.7.1" PrivateAssets="All" />
+      <PackageReference Include="dnlib" Version="3.3.4" PrivateAssets="All" />
+      <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.17.1" PrivateAssets="All" />
+      <PackageReference Include="Microsoft.Build.Framework" Version="16.11.0" PrivateAssets="All" ExcludeAssets="runtime" />
+      <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.11.0" PrivateAssets="All" ExcludeAssets="runtime" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="AssemblyPublicizer.props" />
+    </ItemGroup>
+
+</Project>

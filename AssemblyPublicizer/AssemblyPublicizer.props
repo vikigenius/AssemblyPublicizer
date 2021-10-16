@@ -1,0 +1,6 @@
+﻿<Project TreatAsLocalProperty="PublicizeTaskAssembly">
+    <PropertyGroup>
+        <PublicizeTaskAssembly>$(MSBuildThisFileDirectory)..\lib\net472\$(MSBuildThisFileName).dll</PublicizeTaskAssembly>
+    </PropertyGroup>
+    <UsingTask TaskName="AssemblyPublicizer.PublicizeTask" AssemblyFile="$(PublicizeTaskAssembly)" />
+</Project> 
