@@ -13,6 +13,9 @@
         <Description>MSBuild Task to publicize assemblies</Description>
         <Authors>vikigenius</Authors>
         <RepositoryUrl>https://github.com/vikigenius/AssemblyPublicizer</RepositoryUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Copyright>2021 Vikash Balasubramanian</Copyright>
+        <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 
     <ItemGroup>
