@@ -50,7 +50,7 @@ namespace AssemblyPublicizer
 
             if (!Directory.Exists(OutputDir))
             {
-                Log.LogMessage($"OutputDir missing. Creating {OutputDir}.");
+                Log.LogWarning($"OutputDir missing. Creating {OutputDir}.");
                 Directory.CreateDirectory(OutputDir);
             }
             var outputPath = Path.Combine(OutputDir, $"{filename}{OutputSuffix}.dll");
