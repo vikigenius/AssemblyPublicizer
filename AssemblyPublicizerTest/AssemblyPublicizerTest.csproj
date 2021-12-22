@@ -35,9 +35,11 @@
       <None Update="fixtures\AccessTest.dll">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
+      <None Update="fixtures\TestProjectMissingOutDir.csproj.xml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
       <None Update="fixtures\TestProject.csproj.xml">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
-
 </Project>

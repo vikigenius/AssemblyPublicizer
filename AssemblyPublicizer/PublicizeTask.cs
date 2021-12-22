@@ -47,6 +47,12 @@ namespace AssemblyPublicizer
             
             var moduleDefinition = ModuleDefinition.FromFile(assemblyPath);
             moduleDefinition.Publicize(PublicizeExplicitImpls);
+
+            if (!Directory.Exists(OutputDir))
+            {
+                Log.LogMessage($"OutputDir missing. Creating {OutputDir}.");
+                Directory.CreateDirectory(OutputDir);
+            }
             var outputPath = Path.Combine(OutputDir, $"{filename}{OutputSuffix}.dll");
             moduleDefinition.Write(outputPath);
             return true;

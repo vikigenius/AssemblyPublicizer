@@ -1,0 +1,14 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PublicizeTaskAssembly>$(MSBuildThisFileDirectory)..\AssemblyPublicizer.dll</PublicizeTaskAssembly>
+  </PropertyGroup>
+  <UsingTask TaskName="AssemblyPublicizer.PublicizeTask" AssemblyFile="$(PublicizeTaskAssembly)" />
+  <ItemGroup>
+    <PublicizeInputAssemblies Include="AccessTest.dll"/>
+  </ItemGroup>
+  <UsingTask TaskName="RemoveDir" AssemblyFile="$(MSBuildToolsPath)/Microsoft.Build.Tasks.Core.dll" />
+  <Target Name="Publicize">
+    <RemoveDir Directories="$(MSBuildThisFileDirectory)/missing" />
+    <AssemblyPublicizer.PublicizeTask InputAssemblies="@(PublicizeInputAssemblies)" OutputDir="$(MSBuildThisFileDirectory)/missing"/>
+  </Target>
+</Project>
