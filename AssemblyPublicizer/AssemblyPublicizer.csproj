@@ -16,6 +16,9 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Copyright>2021 Vikash Balasubramanian</Copyright>
         <RepositoryType>git</RepositoryType>
+        <AssemblyVersion>1.0.2</AssemblyVersion>
+        <FileVersion>1.0.2</FileVersion>
+        <Version>1.0.2</Version>
     </PropertyGroup>
 
     <ItemGroup>

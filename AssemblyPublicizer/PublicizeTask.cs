@@ -17,14 +17,14 @@ namespace AssemblyPublicizer
         [Required] public virtual string OutputDir { get; set; } = Directory.GetCurrentDirectory();
 
         public virtual bool PublicizeExplicitImpls { get; set; } = false;
-        
+
         public override bool Execute()
         {
             Log.LogMessage($"Publicizing {InputAssemblies.Length} input assemblies provided");
             return InputAssemblies.Aggregate(true, (current, assembly) => current & PublicizeItem(assembly.ItemSpec));
         }
 
-        private bool PublicizeItem (string assemblyPath)
+        private bool PublicizeItem(string assemblyPath)
         {
             if (!File.Exists(assemblyPath))
             {
@@ -36,15 +36,15 @@ namespace AssemblyPublicizer
             var hashPath = Path.Combine(OutputDir, $"{filename}{OutputSuffix}.hash");
 
             var lastHash = File.Exists(hashPath) ? File.ReadAllText(hashPath) : null;
-            
-            
+
+
             if (curHash == lastHash)
             {
-                Log.LogMessage("Public assembly is up to date.");
+                Log.LogMessage(MessageImportance.High, $"Public assembly {filename} is up to date.");
                 return true;
             }
-            Log.LogMessage($"Generating publicized assembly from {assemblyPath}");
-            
+            Log.LogMessage(MessageImportance.High, $"Generating publicized assembly from {assemblyPath}");
+
             var moduleDefinition = ModuleDefinition.FromFile(assemblyPath);
             moduleDefinition.Publicize(PublicizeExplicitImpls);
 
@@ -55,6 +55,8 @@ namespace AssemblyPublicizer
             }
             var outputPath = Path.Combine(OutputDir, $"{filename}{OutputSuffix}.dll");
             moduleDefinition.Write(outputPath);
+
+            File.WriteAllText(hashPath, curHash);
             return true;
         }
 
