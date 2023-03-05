@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net472</TargetFramework>
-        <LangVersion>9</LangVersion>
+        <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
         <DevelopmentDependency>true</DevelopmentDependency>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -16,9 +16,13 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Copyright>2021 Vikash Balasubramanian</Copyright>
         <RepositoryType>git</RepositoryType>
-        <AssemblyVersion>1.0.2</AssemblyVersion>
-        <FileVersion>1.0.2</FileVersion>
-        <Version>1.0.2</Version>
+        <AssemblyVersion>1.0.3</AssemblyVersion>
+        <FileVersion>1.0.3</FileVersion>
+        <Version>1.0.3</Version>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<NoPackageAnalysis>true</NoPackageAnalysis>
+		<BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
+		<DebugType>none</DebugType>
     </PropertyGroup>
 
     <ItemGroup>
@@ -28,8 +32,10 @@
       <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.11.0" PrivateAssets="All" ExcludeAssets="runtime" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Content Include="AssemblyPublicizer.props" />
-    </ItemGroup>
+	<ItemGroup>
+		<Content Include="AssemblyPublicizer.props" Pack="true" PackagePath="build\" />
+		<Content Include="AssemblyPublicizer.props" Pack="true" PackagePath="buildMultiTargeting\" />
+		<None Include="..\README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
 
 </Project>

@@ -18,6 +18,8 @@ namespace AssemblyPublicizer
 
         public virtual bool PublicizeExplicitImpls { get; set; } = false;
 
+        public virtual bool PublicizeCompilerGeneratedFields { get; set; } = false;
+
         public override bool Execute()
         {
             Log.LogMessage($"Publicizing {InputAssemblies.Length} input assemblies provided");
@@ -46,7 +48,7 @@ namespace AssemblyPublicizer
             Log.LogMessage(MessageImportance.High, $"Generating publicized assembly from {assemblyPath}");
 
             var moduleDefinition = ModuleDefinition.FromFile(assemblyPath);
-            moduleDefinition.Publicize(PublicizeExplicitImpls);
+            moduleDefinition.Publicize(PublicizeExplicitImpls, PublicizeCompilerGeneratedFields);
 
             if (!Directory.Exists(OutputDir))
             {
@@ -72,7 +74,7 @@ namespace AssemblyPublicizer
                     file.Close();
                 }
 
-                foreach (byte b in hash.Hash)
+                foreach (byte b in hash.Hash!)
                     res.Append(b.ToString("X2"));
             }
 
