@@ -16,9 +16,9 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Copyright>2021 Vikash Balasubramanian</Copyright>
 		<RepositoryType>git</RepositoryType>
-		<AssemblyVersion>1.0.3</AssemblyVersion>
-		<FileVersion>1.0.3</FileVersion>
-		<Version>1.0.3</Version>
+		<AssemblyVersion>1.0.4</AssemblyVersion>
+		<FileVersion>1.0.4</FileVersion>
+		<Version>1.0.4</Version>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<NoPackageAnalysis>true</NoPackageAnalysis>
 		<BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
@@ -26,10 +26,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="AsmResolver.DotNet" Version="4.7.1" PrivateAssets="All" />
-		<PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.17.1" PrivateAssets="All" />
-		<PackageReference Include="Microsoft.Build.Framework" Version="16.11.0" PrivateAssets="All" ExcludeAssets="runtime" />
-		<PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.11.0" PrivateAssets="All" ExcludeAssets="runtime" />
+		<PackageReference Include="AsmResolver.DotNet" Version="5.5.0" PrivateAssets="All" />
+		<PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.18" PrivateAssets="All" />
+		<PackageReference Include="Microsoft.Build.Framework" Version="17.8.3" PrivateAssets="All" ExcludeAssets="runtime" />
+		<PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.8.3" PrivateAssets="All" ExcludeAssets="runtime" />
 	</ItemGroup>
 
 	<ItemGroup>
