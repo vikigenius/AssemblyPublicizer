@@ -1,35 +1,41 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net472</TargetFramework>
-        <LangVersion>9</LangVersion>
-        <Nullable>enable</Nullable>
-        <DevelopmentDependency>true</DevelopmentDependency>
-        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-        <IncludeBuildOutput>true</IncludeBuildOutput>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <ContentTargetFolders>build</ContentTargetFolders>
-        <Title>Assembly Publicizer</Title>
-        <Description>MSBuild Task to publicize assemblies</Description>
-        <Authors>vikigenius</Authors>
-        <RepositoryUrl>https://github.com/vikigenius/AssemblyPublicizer</RepositoryUrl>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Copyright>2021 Vikash Balasubramanian</Copyright>
-        <RepositoryType>git</RepositoryType>
-        <AssemblyVersion>1.0.2</AssemblyVersion>
-        <FileVersion>1.0.2</FileVersion>
-        <Version>1.0.2</Version>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net472</TargetFramework>
+		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
+		<DevelopmentDependency>true</DevelopmentDependency>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<IncludeBuildOutput>true</IncludeBuildOutput>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<ContentTargetFolders>build</ContentTargetFolders>
+		<Title>Assembly Publicizer</Title>
+		<Description>MSBuild Task to publicize assemblies</Description>
+		<Authors>vikigenius</Authors>
+		<RepositoryUrl>https://github.com/vikigenius/AssemblyPublicizer</RepositoryUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Copyright>2021 Vikash Balasubramanian</Copyright>
+		<RepositoryType>git</RepositoryType>
+		<AssemblyVersion>1.0.4</AssemblyVersion>
+		<FileVersion>1.0.4</FileVersion>
+		<Version>1.0.4</Version>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<NoPackageAnalysis>true</NoPackageAnalysis>
+		<BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
+		<DebugType>none</DebugType>
+	</PropertyGroup>
 
-    <ItemGroup>
-      <PackageReference Include="AsmResolver.DotNet" Version="4.7.1" PrivateAssets="All" />
-      <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.17.1" PrivateAssets="All" />
-      <PackageReference Include="Microsoft.Build.Framework" Version="16.11.0" PrivateAssets="All" ExcludeAssets="runtime" />
-      <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.11.0" PrivateAssets="All" ExcludeAssets="runtime" />
-    </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AsmResolver.DotNet" Version="5.5.0" PrivateAssets="All" />
+		<PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.18" PrivateAssets="All" />
+		<PackageReference Include="Microsoft.Build.Framework" Version="17.8.3" PrivateAssets="All" ExcludeAssets="runtime" />
+		<PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.8.3" PrivateAssets="All" ExcludeAssets="runtime" />
+	</ItemGroup>
 
-    <ItemGroup>
-      <Content Include="AssemblyPublicizer.props" />
-    </ItemGroup>
+	<ItemGroup>
+		<Content Include="AssemblyPublicizer.props" Pack="true" PackagePath="build\" />
+		<Content Include="AssemblyPublicizer.props" Pack="true" PackagePath="buildMultiTargeting\" />
+		<None Include="..\README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
 
 </Project>

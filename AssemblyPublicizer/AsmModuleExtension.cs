@@ -6,10 +6,11 @@ namespace AssemblyPublicizer
 {
     public static class AsmModuleExtension
     {
-        public static void Publicize(this ModuleDefinition moduleDefinition, bool publicizeExplicitImpls = false)
+        public static void Publicize(this ModuleDefinition moduleDefinition, bool publicizeExplicitImpls = false, bool publicizeCompilerGeneratedFields = false)
         {
             foreach (var type in moduleDefinition.GetAllTypes())
             {
+                type.IsSealed = false;
                 if (type.IsNested)
                     type.IsNestedPublic = true;
                 else
@@ -27,7 +28,10 @@ namespace AssemblyPublicizer
 
                 foreach (var field in type.Fields)
                 {
-                    field.IsPublic = true;
+                    if (publicizeCompilerGeneratedFields || !field.HasCustomAttribute("System.Runtime.CompilerServices", "CompilerGeneratedAttribute"))
+                    {
+                        field.IsPublic = true;
+                    }
                 }
             }
         }
